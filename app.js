@@ -4,15 +4,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var cors = require('cors')
 
 var authenticationRouter = require('./routes/authentication/authentication.router');
 var evaluationRouter = require('./routes/form_evaluation/formEvaluation.router');
 
 var app = express();
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.use(cors()) //for cors use
 
 app.use(logger('dev'));
 app.use(express.json());
