@@ -22,7 +22,7 @@ const verifyToken = (req, res, next) => {
         if(decoded["email"] !== user_mail){
             return res.status(403).send({
                 "status" : 403,
-                "message" : "User unauthenticate",
+                "message" : "User unauthenticated",
             });
         }
 
