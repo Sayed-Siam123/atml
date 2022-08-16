@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const config = process.env;
 
 const verifyToken = (req, res, next) => {
-    const token = req.body.token || req.query.token || req.headers["x-access-token"] || req.headers["authorization"];
+    const token = req.body.token || req.query.token || req.headers["x-access-token"] || req.headers["authorization"] || req.headers["Authorization"];
 
     //console.log(token);
     //console.log(token.split(" ")[1]);
@@ -20,7 +20,6 @@ const verifyToken = (req, res, next) => {
         console.log(decoded);
 
         if(decoded["email"] !== user_mail){
-            console.log("Unauthenticate");
             return res.status(403).send({
                 "status" : 403,
                 "message" : "User unauthenticate",
