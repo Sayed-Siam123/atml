@@ -9,24 +9,26 @@ async function login(req, res) {
 
     try {
         // Get user input
-        const {email, password} = req.body;
+        const data = req.body;
+
+        console.log(req.body["email"]);
 
         // Validate user input
-        if (!email) {
+        if (!data["email"]) {
             res.status(400).send({
                 "status" : 400,
                 "message" : "Email is required",
             });
         }
 
-        if(!password){
+        if(!data["password"]){
             res.status(400).send({
                 "status" : 400,
                 "message" : "Password is required",
             });
         }
 
-        if (password === c_password) {
+        if (data["password"] === c_password) {
             // Create token
             // save user token
             // user.token = jwt.sign(
@@ -39,17 +41,17 @@ async function login(req, res) {
 
             token = jwt.sign(
 
-                {id: 1, email: email,role: "admin"},
+                {id: 1, email: data["email"],role: "admin"},
 
                 process.env.TOKEN_SECRET,
 
-                {expiresIn: process.env.JWT_EXPIRES_IN,}
+                {expiresIn: process.env.JWT_EXPIRES_IN,},
             );
             // user
             res.status(200).json({
                 "status" : 200,
                 "message" : "User Logged in successfully",
-                "email" : email,
+                "email" : data["email"],
                 "token" : token,
             });
         }
