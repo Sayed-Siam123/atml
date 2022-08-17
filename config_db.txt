@@ -1,0 +1,33 @@
+{
+  "development": {
+    "username": "root",
+    "password": null,
+    "database": "database_development",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
+
+
+//TODO::
+STRING, TEXT, ENUM, INTEGER, BOOLEAN, FLOAT as DataTypes
+
+//Command for generating models
+1. npx sequelize-cli model:generate --name User --attributes first_name:string,last_name:string,email:string,phone:string,role:string,avatar:string,
+[User --> Table name, --attributes --> which entity will be here]
+
+2.

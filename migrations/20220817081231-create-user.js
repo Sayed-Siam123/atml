@@ -6,33 +6,28 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        // references: 'table_name',
-        // referencesKey: 'table_entity ex. user_id,cid,bid',
         type: Sequelize.INTEGER
       },
-      full_name: {
-        type: Sequelize.TEXT
+      first_name: {
+        type: Sequelize.STRING
+      },
+      last_name: {
+        type: Sequelize.STRING
       },
       email: {
-        type: Sequelize.TEXT
+        type: Sequelize.STRING
       },
-      password: {
-        type: Sequelize.TEXT
-      },
-      department: {
-        type: Sequelize.TEXT
-      },
-      employee_id: {
-        type: Sequelize.TEXT
-      },
-      designation: {
-        type: Sequelize.TEXT
+      phone: {
+        type: Sequelize.STRING
       },
       role: {
-        type: Sequelize.TEXT
+        type: Sequelize.STRING
       },
-      remember_token: {
-        type: Sequelize.TEXT
+      avatar: {
+        type: Sequelize.STRING,
+      },
+      is_active: {
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
