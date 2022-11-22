@@ -79,31 +79,33 @@ async function registration(req, res) {
 
     try {
         // Get user input
-        const {c_email, password, full_name, employeeID = 3400, department} = req.body;
+        const {firstname, lastname, email, phone, avatar, password, full_name, employeeID = 3400, department} = req.body;
+
+        res.setHeader("Content-Type", "application/json");
 
         // Validate user input
-        if (!c_email) {
+        if (!email) {
             res.status(400).send({
                 "status" : 400,
                 "message" : "Email is required",
             });
         }
 
-        if(!password){
+        else if(!password){
             res.status(400).send({
                 "status" : 400,
                 "message" : "Password is required",
             });
         }
 
-        if(!full_name){
+        else if(!full_name){
             res.status(400).send({
                 "status" : 400,
                 "message" : "Full Name is required",
             });
         }
 
-        if(!department){
+        else if(!department){
             res.status(400).send({
                 "status" : 400,
                 "message" : "department is required",
@@ -111,7 +113,7 @@ async function registration(req, res) {
         }
 
 
-        if (password === c_password) {
+        /*if (password === c_password) {
             token = jwt.sign(
 
                 {ID: 1, mail: c_email,role: "admin"},
@@ -134,7 +136,7 @@ async function registration(req, res) {
                 "status" : 400,
                 "message" : "INVALID CRED",
             });
-        }
+        }*/
 
         // Validate if user exist in our database
         //const user = await User.findOne({email});

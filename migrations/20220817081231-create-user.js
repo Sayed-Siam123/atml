@@ -15,19 +15,22 @@ module.exports = {
         type: Sequelize.STRING
       },
       email: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       phone: {
         type: Sequelize.STRING
       },
       role: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        defaultValue: "1", //1 == employee
       },
       avatar: {
         type: Sequelize.STRING,
+        allowNull: true,
       },
       is_active: {
         type: Sequelize.STRING,
+        defaultValue: "1",
       },
       createdAt: {
         allowNull: false,
