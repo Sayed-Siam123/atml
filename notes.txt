@@ -1,0 +1,13 @@
+NODEJS EXPRESS APP NOTE FOR PERSONAL USE
+**********************************
+
+1. Here app.js is main server file, but it is called in './bin/www' file using 'require'
+2. module.export is used to export something/some functions to other file. If I have to use any function in other file then we use module.export.
+    Example: i. module.export = myFunction;
+             ii. module.export = {
+                myfunction1 : myFunction1,
+                myfunction2 : myFunction2,
+             };
+
+3.
+**********************************
