@@ -1,6 +1,12 @@
 var createError = require('http-errors');
 const dotEnv = require('dotenv');
 var express = require('express');
+
+var projectJson = require('./package.json');
+const swaggerJSDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
+
+
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -23,7 +29,28 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+const swaggerOptions = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'Node JS project for ATML',
+      version: projectJson.version,
+    },
+    servers : [
+      {
+        url : "http://127.0.0.1:3000"
+      },
+      {
+        url : "http://192.168.0.1:3000"
+      }
+    ],
+  },
+  apis: ['./app.js','./routes/Products/products.routes.js'], // files containing annotations as above
+};
+
 // setting end point for particular routes
+const swaggerSpecs = swaggerJSDoc(swaggerOptions);
+app.use('/api/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 app.use('/api/v1/authentication', authenticationRouter);
 app.use('/api/v1/products', productsRouter);
 app.use('/api/v1/evaluation', evaluationRouter);
